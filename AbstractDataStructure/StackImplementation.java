@@ -1,4 +1,8 @@
 package abstractDataType;
+// Strawman implementations
+//Should you call it stack?? It doesn't meet performance specification of stack.
+//refer to StackUsingLinkedList.java
+
 //Implementation of Stack DataType using arrays
 //here capacity is specified by the user at the time of creating an object, 
 //programmer can add extra variable as default size and a function which can increase-
@@ -6,18 +10,14 @@ package abstractDataType;
 
 class Stack {
 	private int[] st;
-	private int capacity;
 	private int end;
 
-	Stack(int capacity) {
-		this.capacity = capacity;
-
-		st = new int[this.capacity];
-		end = 0;
+	Stack(int maxCapacity) {
+		st = new int[maxCapacity];
 	}
 
 	public boolean isFull() {
-		return end == capacity;
+		return end == st.length;
 	}
 
 	public boolean isEmpty() {

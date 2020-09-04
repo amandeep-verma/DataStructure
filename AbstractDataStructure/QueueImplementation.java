@@ -1,4 +1,8 @@
 package abstractDataType;
+//Strawman implementations
+//Should you call it Queue?? It doesnt meet performance specification of queue.
+// refer to QueueUsingLinkedList.java
+
 // Queue Implementation using arrays
 // here is a catch since in a queue the element from front is dequeued so in the
 // implementation we see the front being incremented but with this when the element

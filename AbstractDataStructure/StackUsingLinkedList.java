@@ -1,6 +1,8 @@
 package abstractDataType;
 
-// Stack implementation using Linked List
+// Stack implementation Generic using Linked List
+
+
 public class StackUsingLinkedList<Item> {
 	private Node first;
 	private int N;
@@ -10,6 +12,7 @@ public class StackUsingLinkedList<Item> {
 		N = 0;
 	}
 
+	// Node inside
 	private class Node {
 		private Item item;
 		private Node next;
@@ -25,7 +28,7 @@ public class StackUsingLinkedList<Item> {
 
 	public Item pop() {
 		if (!isEmpty()) {
-			Item item = first.item;
+			Item item = (Item) first.item;
 			first = first.next;
 			N--;
 			return item;
