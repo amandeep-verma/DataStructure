@@ -1,7 +1,7 @@
 package abstractDataType;
 
 
-public class Tree <Item> {
+public class Tree <Item extends Comparable<Item>> {
 	Node root ;
 
 	Tree()
@@ -87,24 +87,21 @@ public class Tree <Item> {
 		return find(present, item);
 	}
 
-	private boolean find(Node present,Item item)
+	private boolean find(Tree<Item>.Node present,Item item)
 	{
 		if ( present == null)
 			return false;
-		else if (((String) item).compareTo((String) present.item) < 0)
-		{
-			present = present.leftChild;
-			find(present, item);
-		}
-		else if (((String) item).compareTo((String) present.item) > 0)
-		{
-			present = present.rightChild;
-			find(present, item);
-		}
-		else 
+		
+		if (item.compareTo(present.item) < 0)
+			return find(present.leftChild, item);
+		
+		else if (item.compareTo(present.item) == 0)
 			return true;
 		
-		return false;
+		else 
+			return find(present.rightChild, item);
+
+		
 	}
 
 	public static void main(String[] args) {
@@ -121,11 +118,11 @@ public class Tree <Item> {
 		tree.add("65");
 		
 		
-		System.out.println("printing the elements in tree");
+		System.out.println("printing all the elements in tree");
 		tree.print();
+		System.out.println("---------------");
 		
-		
-		System.out.println("if tree contains 32 "+tree.find("-32"));
+		System.out.println("if tree contains 32 "+tree.find("51"));
 	}
 
 }
