@@ -1,113 +1,105 @@
 package abstractDataType;
 
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class Tree <Item extends Comparable<Item>> {
-	Node root ;
 
-	Tree()
-	{
+public class Tree<Item extends Comparable<Item>> {
+	
+	Node root;
+
+	Tree() {
 		root = null;
 	}
-	
-	private class Node{
+
+	private class Node {
 		private Item item;
 		private Node leftChild;
 		private Node rightChild;
-//		private Node parent; // only if you need pointer from child to parent
-	}
-	
-	public void add(Item item) {
-		if(root == null)
+		Node(Item item)
 		{
-			root= new Node();
-			root.item = item;
-			return;
+			this.item = item;
 		}
-		Node present =root;
-		
-		add(item, present);
 	}
 
-	
-	public void add(Item item, Node present) {
-		
-		if (present.item == null)
-		{
-			present.item = item;
-		}
-		
-		else if (((String) item).compareTo((String) present.item) < 0)
-		{
-			if(present.leftChild == null)
-				present.leftChild = new Node();
-			present = present.leftChild;
-			add(item, present);
-		}
-		
-		else if (((String) item).compareTo((String) present.item) > 0)
-		{
-			if(present.rightChild == null)
-				present.rightChild = new Node();
-			present = present.rightChild;
-			add(item, present);
-		}
-		
+	public void add(Item item) {
+
+		root=add(item, root);
 	}
-	
-	public void print()
-	{
+
+	public Node add(Item item, Node present) {
+
+		if (present == null)
+			return new Node(item);
+		
+		if (item.compareTo(present.item) < 0) {
+			present.leftChild= add(item, present.leftChild);
+		}
+
+		else if (item.compareTo(present.item) > 0) {
+			present.rightChild=add(item, present.rightChild);
+		}
+
+		return present;
+	}
+
+	public Iterable<Item> print() {
+		Queue<Item> queue = new LinkedList<Item>();
+		
 		Node present = root;
-		print(present);
-		
-	}	
-	
-	private void print(Tree<Item>.Node present) {
-		
+		print(present,queue);
+		return queue;
+
+	}
+
+	/* returning items can be done in 2 ways 
+	1. storing the items in queue and iterate through the tree in any order(inorder, preorder, postorder)
+	2. implements iterable interface and do it. (gets complicated, how would you implement hasNext(), next() for tree)
+	*/
+	private void print(Node present, Queue<Item> queue) {
+
 		if (present == null)
 			return;
-		if(present.leftChild!=null)
-		{
-			print(present.leftChild);
+		if (present.leftChild != null) {
+			print(present.leftChild,queue);
 		}
-		if (present != null)
-		{
-			System.out.println(present.item);
+		if (present != null) {
+			queue.add(present.item);
 		}
-		if (present.rightChild!=null)
-		{
-			print(present.rightChild);
+		if (present.rightChild != null) {
+			print(present.rightChild,queue);
 		}
 	}
+
+
 	
-	private boolean find(Item item)
-	{
+	public boolean find(Item item) {
 		if (root == null)
 			return false;
 		Node present = root;
 		return find(present, item);
 	}
 
-	private boolean find(Tree<Item>.Node present,Item item)
-	{
-		if ( present == null)
+	private boolean find(Tree<Item>.Node present, Item item) {
+		if (present == null)
 			return false;
-		
+
 		if (item.compareTo(present.item) < 0)
 			return find(present.leftChild, item);
-		
+
 		else if (item.compareTo(present.item) == 0)
 			return true;
-		
-		else 
+
+		else
 			return find(present.rightChild, item);
 
-		
 	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Tree<String> tree = new Tree<String>();
-		
+
 		// adding the elements to tree
 		tree.add("50");
 		tree.add("40");
@@ -116,13 +108,13 @@ public class Tree <Item extends Comparable<Item>> {
 		tree.add("32");
 		tree.add("33");
 		tree.add("65");
-		
-		
+
 		System.out.println("printing all the elements in tree");
-		tree.print();
+		System.out.println(tree.print());
 		System.out.println("---------------");
-		
-		System.out.println("if tree contains 32 "+tree.find("51"));
+
+		System.out.println("if tree contains 32 ??? => " + tree.find("32"));
 	}
+
 
 }

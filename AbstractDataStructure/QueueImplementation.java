@@ -14,13 +14,15 @@ package abstractDataType;
 // variable in the class and can be changed with a function with growing number of enqueue
 // and dequeue operations, like the comments in stackimplementation.java says.
 
-class Queue {
+
+public class QueueImplementation {
+	
 	private int[] st;
 	private int capacity;
 	private int front,rear;
 	
 
-	Queue(int capacity) {
+	QueueImplementation(int capacity) {
 		this.capacity = capacity;
 		front = rear = 0;
 		st = new int[this.capacity];
@@ -64,14 +66,10 @@ class Queue {
 
 	}
 
-}
-
-public class QueueImplementation {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Queue q1= new Queue(5);
+		QueueImplementation q1= new QueueImplementation(5);
 		q1.enqueue(5);
 		q1.enqueue(6);
 		q1.enqueue(7);

@@ -8,11 +8,14 @@ package abstractDataType;
 //programmer can add extra variable as default size and a function which can increase-
 //decrease the capacity of stack with growing number of pushes and pops
 
-class Stack {
+
+
+public class StackImplementation {
+	
 	private int[] st;
 	private int end;
 
-	Stack(int maxCapacity) {
+	StackImplementation(int maxCapacity) {
 		st = new int[maxCapacity];
 	}
 
@@ -54,12 +57,8 @@ class Stack {
 
 	}
 
-}
-
-public class StackImplementation {
-
 	public static void main(String[] args) {
-		Stack a = new Stack(5);
+		StackImplementation a = new StackImplementation(5);
 
 		a.push(5);
 		a.push(6);

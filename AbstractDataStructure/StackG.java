@@ -48,7 +48,16 @@ public class StackG<Item> {
 			System.out.print((i == end - 1) ? it[i] : it[i] + ", ");
 		}
 		System.out.println("]");
-
+	}
+	
+	public String printIt()
+	{
+		StringBuilder s = new StringBuilder();
+		for(Item item: it)
+		{
+			s.append(item+" ");
+		}
+		return s.toString();
 	}
 
 	public static void main(String[] args) {
@@ -76,6 +85,9 @@ public class StackG<Item> {
 		ab.pop();
 		ab.push(6);
 		ab.printStack();
+		
+		
+		System.out.println(ab.printIt());
 	}
 
 }

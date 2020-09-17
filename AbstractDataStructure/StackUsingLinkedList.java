@@ -1,9 +1,12 @@
 package abstractDataType;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 // Stack implementation Generic using Linked List
 
 
-public class StackUsingLinkedList<Item> {
+public class StackUsingLinkedList<Item> implements Iterable<Item>{
 	private Node first;
 	private int N;
 
@@ -46,14 +49,48 @@ public class StackUsingLinkedList<Item> {
 
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		Node current = first;
-		while (current != null) {
-			s.append(current.item);
-			s.append(' ');
-			current = current.next;
-		}
-		return s.toString();
+		for (Item item : this)
+            s.append(item + " ");
+        return s.toString();
+        
+        // uncomment to return element with iterator;
+//		Node current = first;
+//		while (current != null) {
+//			s.append(current.item);
+//			s.append(' ');
+//			current = current.next;
+//		}
+//		
+//		return s.toString();
 	}
+	
+
+	@Override
+	public Iterator<Item> iterator() {
+		return new ListIterator();
+	}
+	
+	private class ListIterator implements Iterator<Item>
+	{
+		private Node current = first;
+		
+		public boolean hasNext() {
+			return current != null;
+		}
+
+		@Override
+		public Item next() {
+			if (!hasNext()) throw new NoSuchElementException();
+            Item item = current.item;
+            current = current.next;
+            return item;
+		}
+
+		public void remove() {
+            throw new UnsupportedOperationException();
+        }
+	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -74,4 +111,5 @@ public class StackUsingLinkedList<Item> {
 		}
 
 	}
+	
 }
