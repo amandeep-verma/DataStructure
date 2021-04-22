@@ -1,0 +1,38 @@
+
+For String Problem: 
+
+1. Most useful String methods
+    1. chatAt(i) - returns char at position i
+    2. compareTo(str) - compare the original String with str, returns the compare value
+    3. compareToIgnoreCase(str) - compare the original String with str, ignoring the cases, returns the compare value
+    4. concat(str)- concatenate the String name with str.
+    5. equals(str) - checks if both string are equal, return true, false
+    6. equalsIgnoreCase(str) - checks if both string are equal ignoring the case, return true, false
+    7. indexOf(str) - returns the first occurrence of the String str in String.
+    8. indexOf(str, fromIndex) - returns the index of str after fromIndex in the String, else -1
+    9. lastIndexOf(str) - returns the last occurrence of the String str in String.
+    10. lastIndexOf(str, fromIndex) - returns the last occurrence  of str before fromIndex in the String
+    11. length() - returns the length of the String.
+    12. matches("regex") - compare the string with given regular expression
+    13. substring(i) - returns the subString from position i to last.
+    14. substring(i,j) - returns the subString in the position [i, j)
+    15. toCharArray() - returns the character array of the String
+    16. toLowerCase() - converts the String to lower character
+    17. toUpperCase() - coverts the String to Upper character
+    18. trim() - trims all the leading and trailing white spaces
+2. Strings are immutable, use StringBuilder() using new StringBuilder(String) or new StringBuilder() constructors.
+    1. append(object) - appends the object to the StringBuilder
+    2. charAt(i) - returns char at position i
+    3. delete(i, j) - delete characters [i, j)
+    4. deleteCharAt(i) - delete characters at i
+    5. equals(str) - checks if both string are equal, return true, false
+    6. indexOf(str) - returns the first occurrence of the String str in String.
+    7. indexOf(str, fromIndex) - returns the index of str after fromIndex in the String, else -1
+    8. insert(i, object)- add the object to string builder at index i
+    9. lastIndexOf(str) - returns the last occurrence of the String str in String.
+    10. lastIndexOf(str, fromIndex) - returns the last occurrence  of str before fromIndex in the String
+    11. replace(start,end,str) - replace the index from start to end with string
+    12. reverse() - reverses the string
+    13. substring(i) - returns the subString from position i to last.
+    14. substring(i,j) - returns the subString in the position [i, j)
+    15. toString() - converts StringBuilder to String.
